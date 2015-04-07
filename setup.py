@@ -9,7 +9,7 @@ history = open('CHANGES.rst').read().replace('.. :changelog:', '')
 
 setup(
     name='secure-smtplib',
-    version='0.1.0',
+    version='0.1.1',
     author='Thomas Grainger',
     author_email='secure-smtplib@graingert.co.uk',
     maintainer='Thomas Grainger',

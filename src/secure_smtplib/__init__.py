@@ -21,12 +21,13 @@ class STARTTLS(smtplib.SMTP):
         self._sslkwargs = sslkwargs
 
     def starttls(self, keyfile=None, certfile=None):
+        self.ehlo_or_helo_if_needed()
         if not self.has_extn("starttls"):
             msg = "STARTTLS extension not supported by server"
             raise smtplib.SMTPException(msg)
         (resp, reply) = self.docmd("STARTTLS")
         if resp == 220:
-            self.sock = ssl.ssl_wrap_socket(
+            self.sock = ssl.wrap_socket(
                 self.sock,
                 keyfile,
                 certfile,
